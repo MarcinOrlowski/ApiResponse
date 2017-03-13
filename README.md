@@ -2,6 +2,7 @@ ApiResponse
 ===========
 
 [![Release](https://jitpack.io/v/MarcinOrlowski/apiresponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
+[![Dependency Status](https://dependencyci.com/github/MarcinOrlowski/ApiResponse/badge)](https://dependencyci.com/github/MarcinOrlowski/ApiResponse)
 
  `ApiResponse` helps simplifying management of API JSON responses. It follows the API
  format as produced by [Api Response Builder](https://github.com/MarcinOrlowski/laravel-api-response-builder)
