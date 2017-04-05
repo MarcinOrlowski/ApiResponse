@@ -6,7 +6,7 @@ ApiResponse
 
  `ApiResponse` helps simplifying management of API JSON responses. It follows the API
  format as produced by [Api Response Builder](https://github.com/MarcinOrlowski/laravel-api-response-builder)
- library.
+ library but can be used to consume response JSONs produced by any API.
 
 
 Installation
