@@ -42,10 +42,6 @@ dependencies {
     compile 'org.parceler:parceler-api:1.1.6'
     annotationProcessor 'org.parceler:parceler:1.1.6'
 
-    // Lombok: https://projectlombok.org/
-    compile 'org.projectlombok:lombok:1.16.14'
-    annotationProcessor 'org.projectlombok:lombok:1.16.14'
-
     // Icepick: https://github.com/frankiesardo/icepick
     compile 'frankiesardo:icepick:3.2.0'
     provided 'frankiesardo:icepick-processor:3.2.0'

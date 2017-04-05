@@ -26,11 +26,6 @@ import org.json.JSONObject;
 import org.parceler.Parcel;
 import org.parceler.ParcelPropertyConverter;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.Accessors;
-import lombok.experimental.Tolerate;
-
 /**
  * API response container
  */
@@ -43,33 +38,7 @@ final public class ApiResponse {
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_DATA = "data";
 
-	@Accessors (prefix = "m") @Setter @Getter
-	@Expose
-	@SerializedName (KEY_SUCCESS)
-	protected boolean mSuccess = false;
-
-	@Accessors (prefix = "m") @Setter @Getter
-	@Expose
-	@SerializedName (KEY_CODE)
-	protected int mCode = 0;
-
-	@Accessors (prefix = "m") @Setter @Getter
-	@Expose
-	@SerializedName (KEY_LOCALE)
-	protected String mLocale = "";
-
-	@Accessors (prefix = "m") @Getter @Expose
-	@SerializedName (KEY_LOCALE)
-	protected String mMessage = "";
-
-	/**
-	 * HTTP Response code. Useful mainly while dealing with errors
-	 */
-	@Accessors (prefix = "m") @Setter @Getter
-	protected int mHttpCode;
-
-	@ParcelPropertyConverter (JSONObjectParcelConverter.class)
-	protected JSONObject mResponseJsonObject = null;
+	// -----------------------------------------------------------------------------------------
 
 	public ApiResponse() {
 		// dummy
@@ -84,16 +53,131 @@ final public class ApiResponse {
 		setMessage(e.getMessage());
 	}
 
+	// -----------------------------------------------------------------------------------------
+
+	@Expose
+	@SerializedName (KEY_SUCCESS)
+	protected boolean mSuccess = false;
+
 	/**
-	 * Returns true if Api response is successful AND response "data" contains "key" index.
+	 * Returns @true if received API response indicates succeess
 	 *
-	 * @param key
 	 * @return
 	 */
-	@Tolerate
-	public boolean isSuccess(String key) {
-		return (isSuccess() && (getData() != null) && (getData().has(key)));
+	public boolean isSuccess() {
+		return mSuccess;
 	}
+
+	/**
+	 * @param succes
+	 *
+	 * @return
+	 */
+	@NonNull
+	public ApiResponse setSuccess(boolean success) {
+		mSuccess = success;
+		return this;
+	}
+
+	/**
+	 * Returns true if API response is successful AND response "data" contains "key" index.
+	 *
+	 * @param key JSON node key to look for. If @null passed, acts as isSuccess()
+	 *
+	 * @return
+	 */
+	public boolean isSuccess(@Nullable String key) {
+		if (key == null) {
+			return isSuccess();
+		} else {
+			return (isSuccess() && (getData() != null) && (getData().has(key)));
+		}
+	}
+
+	// -----------------------------------------------------------------------------------------
+
+	@Expose
+	@SerializedName (KEY_CODE)
+	protected int mCode = 0;
+
+	@NonNull
+	public ApiResponse setCode(int code) {
+		mCode = code;
+		return this;
+	}
+
+	public int getCode() {
+		return mCode;
+	}
+
+	// -----------------------------------------------------------------------------------------
+
+	@Expose
+	@SerializedName (KEY_LOCALE)
+	protected String mLocale = "";
+
+	@NonNull
+	public ApiResponse setLocale(@Nullable String locale) {
+		mLocale = locale;
+		return this;
+	}
+
+	@Nullable
+	public String getLocale() {
+		return mLocale;
+	}
+
+	// -----------------------------------------------------------------------------------------
+
+	@Expose
+	@SerializedName (KEY_MESSAGE)
+	protected String mMessage = "";
+
+	/**
+	 * Sets message. If @null is passed, it is internally changed and set as empty string
+	 *
+	 * @param message message
+	 *
+	 * @return
+	 */
+	@SuppressWarnings ("UnusedReturnValue")
+	@NonNull
+	public ApiResponse setMessage(@Nullable String message) {
+		if (message == null) {
+			message = "";
+		}
+		mMessage = message;
+		return this;
+	}
+
+	@NonNull
+	public String getMessage() {
+		return mMessage;
+	}
+
+	// -----------------------------------------------------------------------------------------
+
+	/**
+	 * HTTP Response code. Useful mainly while dealing with errors
+	 */
+	protected int mHttpCode;
+
+	@NonNull
+	public ApiResponse setHttpCode(int httpCode) {
+		mHttpCode = httpCode;
+		return this;
+	}
+
+	public int getHttpCode() {
+		return mHttpCode;
+	}
+
+	// -----------------------------------------------------------------------------------------
+
+	@ParcelPropertyConverter (JSONObjectParcelConverter.class)
+	protected JSONObject mResponseJsonObject = null;
+
+	// -----------------------------------------------------------------------------------------
 
 	/**
 	 * Populate from JSON response.
@@ -119,23 +203,6 @@ final public class ApiResponse {
 		return this;
 	}
 
-
-	/**
-	 * Sets message. If @null is passed converts it to empty string
-	 *
-	 * @param message message
-	 *
-	 * @return
-	 */
-	@SuppressWarnings ("UnusedReturnValue")
-	@NonNull
-	public ApiResponse setMessage(@Nullable String message) {
-		if (message == null) {
-			message = "";
-		}
-		mMessage = message;
-		return this;
-	}
 
 	/**
 	 * Sets response json object.
