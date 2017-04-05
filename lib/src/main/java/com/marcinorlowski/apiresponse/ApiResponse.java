@@ -107,6 +107,14 @@ final public class ApiResponse {
 		}
 	}
 
+	/**
+	 * Returns true if API response indicates failure
+	 *
+	 */
+	public boolean failed() {
+		return (success() == false);
+	}
+
 	// -----------------------------------------------------------------------------------------
 
 	@Expose

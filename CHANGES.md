@@ -1,6 +1,10 @@
 ApiResponse
 ===========
 
+v1.2.0 (2017.04.05)
+-------------------
+- Added `failed()` as opposite to `success()`
+
 v1.1.0 (2017.04.05)
 -------------------
 - Added `success(key)` method
