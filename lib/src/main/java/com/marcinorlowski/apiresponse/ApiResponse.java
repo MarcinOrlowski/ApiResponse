@@ -29,6 +29,7 @@ import org.parceler.ParcelPropertyConverter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import lombok.experimental.Tolerate;
 
 /**
  * API response container
@@ -81,6 +82,17 @@ final public class ApiResponse {
 	public ApiResponse(@NonNull Exception e) {
 		setSuccess(false);
 		setMessage(e.getMessage());
+	}
+
+	/**
+	 * Returns true if Api response is successful AND response "data" contains "key" index.
+	 *
+	 * @param key
+	 * @return
+	 */
+	@Tolerate
+	public boolean isSuccess(String key) {
+		return (isSuccess() && (getData() != null) && (getData().has(key)));
 	}
 
 	/**
