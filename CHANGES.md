@@ -3,7 +3,8 @@ ApiResponse
 
 v1.1.0 (2017.04.05)
 -------------------
-- Added `isSuccess(key)` method
+- Added `success(key)` method
+- `isSuccess()` method is deprecated. Use `success()` instead.
 - Fixed Gson related issue with `message` element being incorrectly referenced
 - Removed Lombok dependency
 

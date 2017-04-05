@@ -60,15 +60,6 @@ final public class ApiResponse {
 	protected boolean mSuccess = false;
 
 	/**
-	 * Returns @true if received API response indicates succeess
-	 *
-	 * @return
-	 */
-	public boolean isSuccess() {
-		return mSuccess;
-	}
-
-	/**
 	 * @param success
 	 *
 	 * @return
@@ -80,17 +71,39 @@ final public class ApiResponse {
 	}
 
 	/**
+	 * @deprecated use @success() instead
+	 */
+	public boolean isSuccess() {
+		return mSuccess;
+	}
+
+	/**
+	 * @deprecated use @success() instead
+	 */
+	public boolean isSuccess(@Nullable String key) {
+		return success(key);
+	}
+
+	/**
+	 * Returns @true if received API response indicates success
+	 *
+	 * @return
+	 */
+	public boolean success() {
+		return isSuccess();
+	}
+
+	/**
 	 * Returns true if API response is successful AND response "data" contains "key" index.
 	 *
 	 * @param key JSON node key to look for. If @null passed, acts as isSuccess()
 	 *
-	 * @return
 	 */
-	public boolean isSuccess(@Nullable String key) {
+	public boolean success(@Nullable String key) {
 		if (key == null) {
-			return isSuccess();
+			return success();
 		} else {
-			return (isSuccess() && (getData() != null) && (getData().has(key)));
+			return (success() && (getData() != null) && (getData().has(key)));
 		}
 	}
 
@@ -134,7 +147,7 @@ final public class ApiResponse {
 	protected String mMessage = "";
 
 	/**
-	 * Sets message. If @null is passed, it is internally changed and set as empty string
+	 * Sets message string. If @null is passed, it is internally changed and set as empty string
 	 *
 	 * @param message message
 	 *
