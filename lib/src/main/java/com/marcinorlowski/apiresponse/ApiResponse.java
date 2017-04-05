@@ -69,7 +69,7 @@ final public class ApiResponse {
 	}
 
 	/**
-	 * @param succes
+	 * @param success
 	 *
 	 * @return
 	 */
