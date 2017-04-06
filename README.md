@@ -1,7 +1,7 @@
 ApiResponse
 ===========
 
-[![Release](https://jitpack.io/v/MarcinOrlowski/apiresponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
+[![Release](https://jitpack.io/v/MarcinOrlowski/ApiResponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
 [![Dependency Status](https://dependencyci.com/github/MarcinOrlowski/ApiResponse/badge)](https://dependencyci.com/github/MarcinOrlowski/ApiResponse)
 
  `ApiResponse` helps simplifying management of API JSON responses. It follows the API
@@ -26,7 +26,7 @@ Installation
     compile 'com.github.MarcinOrlowski:ApiResponse:<VERSION>'
 
  For recent value of `<VERSION>` consult [library releases](https://github.com/MarcinOrlowski/ApiResponse/releases)
- or jitpack badge: [![Release](https://jitpack.io/v/MarcinOrlowski/apiresponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
+ or jitpack badge: [![Release](https://jitpack.io/v/MarcinOrlowski/ApiResponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
 
 Project support
 ===============
