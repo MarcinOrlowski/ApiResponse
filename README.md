@@ -2,6 +2,7 @@ ApiResponse
 ===========
 
 [![Release](https://jitpack.io/v/MarcinOrlowski/ApiResponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
+![Downloads](https://jitpack.io/v/MarcinOrlowski/ApiResponse/month.svg)
 [![Dependency Status](https://dependencyci.com/github/MarcinOrlowski/ApiResponse/badge)](https://dependencyci.com/github/MarcinOrlowski/ApiResponse)
 
  `ApiResponse` helps simplifying management of API JSON responses. It follows the API
