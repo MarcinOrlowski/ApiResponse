@@ -24,21 +24,11 @@ Installation
 
  Next, edit your **module**'s `build.gradle` and the following dependency:
 
-    compile 'com.github.MarcinOrlowski:ApiResponse:<VERSION>'
+    implementation 'com.github.MarcinOrlowski:ApiResponse:<VERSION>'
 
  For recent value of `<VERSION>` consult [library releases](https://github.com/MarcinOrlowski/ApiResponse/releases)
  or jitpack badge: [![Release](https://jitpack.io/v/MarcinOrlowski/ApiResponse.svg)](https://jitpack.io/#MarcinOrlowski/ApiResponse)
 
-Project support
-===============
-  
- `ApiResponse` is free software and you can use it fully free of charge in any of your projects, open source or 
- commercial, however if you feel it prevent you from reinventing the wheel, helped having your projects done or simply
- saved you time and money  then then feel free to donate to the project by sending some BTC to 
- `1LbfbmZ1KfSNNTGAEHtP63h7FPDEPTa3Yo`.
-  
- ![BTC](img/btc.png)
-  
 
 Contributing
 ============
@@ -58,5 +48,5 @@ Contributing
 License
 =======
   
-  * Written and copyrighted &copy;2013-2017 by Marcin Orlowski <mail (#) marcinorlowski (.) com>
+  * Written and copyrighted &copy;2013-2018 by Marcin Orlowski <mail (#) marcinorlowski (.) com>
   * `ApiResponse` is open-sourced library licensed under the Apache 2.0 license
