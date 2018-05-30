@@ -1,9 +1,17 @@
 ApiResponse
 ===========
 
+v1.3.0 (2018.05.30)
+-------------------
+- Updated depenencies
+- Added Android-State bundler
+- IcePick's bundler class renamed to "ApiResponseBundler"
+
+
 v1.2.0 (2017.04.05)
 -------------------
 - Added `failed()` as opposite to `success()`
+
 
 v1.1.0 (2017.04.05)
 -------------------

@@ -1,9 +1,9 @@
-package com.marcinorlowski.apiresponse.helpers.icepick;
+package com.marcinorlowski.apiresponse.helpers.androidstate;
 
 /*
  ******************************************************************************
  *
- * Copyright 2017 Marcin Orłowski
+ * Copyright 2017-2018 Marcin Orlowski
  *
  * Licensed under the Apache License 2.0
  *
@@ -16,21 +16,22 @@ package com.marcinorlowski.apiresponse.helpers.icepick;
 
 import android.os.Bundle;
 
+import com.evernote.android.state.Bundler;
 import com.marcinorlowski.apiresponse.ApiResponse;
 
 import org.parceler.Parcels;
 
-import icepick.Bundler;
 
 /**
- * Icepick bundler for ApiResponse model
+ * Android-State bundler for ApiResponse model
+ * https://github.com/evernote/android-state
  *
  * When annotating response for save sate use:
  *
- * @State (ApiResponseIcepickBundler.class)
+ * @State (ApiResponseBundler.class)
  * ApiResponse foo;
  */
-public class ApiResponseIcepickBundler implements Bundler<ApiResponse> {
+public class ApiResponseBundler implements Bundler<ApiResponse> {
 
 	@Override
 	public void put(String key, ApiResponse value, Bundle bundle) {
