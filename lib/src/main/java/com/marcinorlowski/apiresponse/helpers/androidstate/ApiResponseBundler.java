@@ -16,11 +16,11 @@ package com.marcinorlowski.apiresponse.helpers.icepick;
 
 import android.os.Bundle;
 
+import com.evernote.android.state.Bundler;
 import com.marcinorlowski.apiresponse.ApiResponse;
 
 import org.parceler.Parcels;
 
-import com.evernote.android.state.Bundler;
 
 /**
  * Android-State bundler for ApiResponse model
