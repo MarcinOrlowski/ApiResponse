@@ -5,6 +5,7 @@
 /.idea/libraries
 /.idea/sonarlint/
 /.idea/kotlinc.xml
+/.idea/caches/
 .DS_Store
 /build
 /captures
