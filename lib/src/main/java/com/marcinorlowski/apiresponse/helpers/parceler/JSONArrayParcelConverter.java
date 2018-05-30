@@ -3,7 +3,7 @@ package com.marcinorlowski.apiresponse.helpers.parceler;
 /*
  ******************************************************************************
  *
- * Copyright 2017 Marcin Orłowski
+ * Copyright 2017-2018 Marcin Orlowski
  *
  * Licensed under the Apache License 2.0
  *
