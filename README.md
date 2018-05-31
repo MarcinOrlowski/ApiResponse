@@ -9,6 +9,9 @@ ApiResponse
  format as produced by [Api Response Builder](https://github.com/MarcinOrlowski/laravel-api-response-builder)
  library but can be used to consume response JSONs produced by any API.
 
+ Includes bundlers for [IcePick](https://github.com/frankiesardo/icepick) 
+ and [Android-State](https://github.com/evernote/android-state) state saving libraries.
+
 
 Installation
 ============
