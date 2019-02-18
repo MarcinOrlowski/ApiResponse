@@ -1,9 +1,9 @@
 package com.marcinorlowski.apiresponse;
 
-/*
+/**
  ******************************************************************************
  *
- * Copyright 2017-2018 Marcin Orlowski
+ * Copyright 2017-2019 Marcin Orlowski
  *
  * Licensed under the Apache License 2.0
  *
@@ -14,23 +14,20 @@ package com.marcinorlowski.apiresponse;
  ******************************************************************************
  */
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import com.marcinorlowski.apiresponse.helpers.parceler.JSONObjectParcelConverter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.parceler.Parcel;
-import org.parceler.ParcelPropertyConverter;
+import androidx.annotation.NonNull;
+
+import androidx.annotation.Nullable;
 
 /**
  * API response container
  */
-@Parcel (Parcel.Serialization.BEAN)
-final public class ApiResponse {
+final public class ApiResponse implements Parcelable {
 
 	public static final String KEY_SUCCESS = "success";
 	public static final String KEY_CODE = "code";
@@ -56,8 +53,7 @@ final public class ApiResponse {
 	// -----------------------------------------------------------------------------------------
 
 	@Expose
-	@SerializedName (KEY_SUCCESS)
-	protected boolean mSuccess = false;
+	protected boolean success = false;
 
 	/**
 	 * @param success
@@ -66,22 +62,8 @@ final public class ApiResponse {
 	 */
 	@NonNull
 	public ApiResponse setSuccess(boolean success) {
-		mSuccess = success;
+		this.success = success;
 		return this;
-	}
-
-	/**
-	 * @deprecated use @success() instead
-	 */
-	public boolean isSuccess() {
-		return mSuccess;
-	}
-
-	/**
-	 * @deprecated use @success() instead
-	 */
-	public boolean isSuccess(@Nullable String key) {
-		return success(key);
 	}
 
 	/**
@@ -90,7 +72,7 @@ final public class ApiResponse {
 	 * @return
 	 */
 	public boolean success() {
-		return isSuccess();
+		return this.success;
 	}
 
 	/**
@@ -112,47 +94,46 @@ final public class ApiResponse {
 	 *
 	 */
 	public boolean failed() {
-		return (success() == false);
+		return (!success());
 	}
 
 	// -----------------------------------------------------------------------------------------
 
 	@Expose
-	@SerializedName (KEY_CODE)
-	protected int mCode = 0;
+	protected int code = 0;
 
 	@NonNull
 	public ApiResponse setCode(int code) {
-		mCode = code;
+		this.code = code;
 		return this;
 	}
 
 	public int getCode() {
-		return mCode;
+		return this.code;
 	}
 
 	// -----------------------------------------------------------------------------------------
 
 	@Expose
-	@SerializedName (KEY_LOCALE)
-	protected String mLocale = "";
+	protected String locale = "";
 
 	@NonNull
 	public ApiResponse setLocale(@Nullable String locale) {
-		mLocale = locale;
+		this.locale = locale;
 		return this;
 	}
 
 	@Nullable
+	@NonNull
 	public String getLocale() {
-		return mLocale;
+		return this.locale;
 	}
 
 	// -----------------------------------------------------------------------------------------
 
 	@Expose
-	@SerializedName (KEY_MESSAGE)
-	protected String mMessage = "";
+	@NonNull
+	protected String message = "";
 
 	/**
 	 * Sets message string. If @null is passed, it is internally changed and set as empty string
@@ -167,13 +148,13 @@ final public class ApiResponse {
 		if (message == null) {
 			message = "";
 		}
-		mMessage = message;
+		this.message = message;
 		return this;
 	}
 
 	@NonNull
 	public String getMessage() {
-		return mMessage;
+		return this.message;
 	}
 
 	// -----------------------------------------------------------------------------------------
@@ -181,22 +162,22 @@ final public class ApiResponse {
 	/**
 	 * HTTP Response code. Useful mainly while dealing with errors
 	 */
-	protected int mHttpCode;
+	protected int httpCode;
 
 	@NonNull
 	public ApiResponse setHttpCode(int httpCode) {
-		mHttpCode = httpCode;
+		this.httpCode = httpCode;
 		return this;
 	}
 
 	public int getHttpCode() {
-		return mHttpCode;
+		return this.httpCode;
 	}
 
 	// -----------------------------------------------------------------------------------------
 
-	@ParcelPropertyConverter (JSONObjectParcelConverter.class)
-	protected JSONObject mResponseJsonObject = null;
+	@NonNul
+	protected JSONObject responseJsonObject = new JSONObject();
 
 	// -----------------------------------------------------------------------------------------
 
@@ -235,7 +216,7 @@ final public class ApiResponse {
 	@SuppressWarnings ("UnusedReturnValue")
 	@NonNull
 	public ApiResponse setResponseJsonObject(@Nullable JSONObject json) {
-		mResponseJsonObject = json;
+		responseJsonObject = json;
 		return this;
 	}
 
@@ -246,7 +227,7 @@ final public class ApiResponse {
 	 */
 	@Nullable
 	public JSONObject getResponseJsonObject() {
-		return mResponseJsonObject;
+		return responseJsonObject;
 	}
 
 	/**
@@ -259,7 +240,7 @@ final public class ApiResponse {
 		JSONObject result = null;
 
 		JSONObject j = getResponseJsonObject();
-		if ((j != null) && (j.has("data"))) {
+		if ((j != null) && (j.has(KEY_DATA))) {
 			try {
 				result = getResponseJsonObject().getJSONObject(KEY_DATA);
 			} catch (Exception e) {
@@ -367,4 +348,29 @@ final public class ApiResponse {
 		return result;
 	}
 
+	@Override
+	public int describeContents() { return 0; }
+
+	@Override
+	public void writeToParcel(android.os.Parcel dest, int flags) {
+		dest.writeString(responseJsonObject.toString());
+		dest.writeInt(httpCode);
+	}
+
+	protected ApiResponse(android.os.Parcel in) {
+		try {
+			populateFromJsonResponse(in.readString());
+			this.httpCode = in.readInt();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static final Creator<ApiResponse> CREATOR = new Creator<ApiResponse>() {
+		@Override
+		public ApiResponse createFromParcel(android.os.Parcel source) {return new ApiResponse(source);}
+
+		@Override
+		public ApiResponse[] newArray(int size) {return new ApiResponse[size];}
+	};
 }
