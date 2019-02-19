@@ -9,6 +9,9 @@ ApiResponse
  format as produced by [Api Response Builder](https://github.com/MarcinOrlowski/laravel-api-response-builder)
  library but can be used to consume response JSONs produced by any API.
 
+ Includes bundlers for [IcePick](https://github.com/frankiesardo/icepick) 
+ and [Android-State](https://github.com/evernote/android-state) state saving libraries.
+
 
 Installation
 ============
@@ -48,5 +51,5 @@ Contributing
 License
 =======
   
-  * Written and copyrighted &copy;2013-2018 by Marcin Orlowski <mail (#) marcinorlowski (.) com>
+  * Written and copyrighted &copy;2013-2019 by Marcin Orlowski <mail (#) marcinorlowski (.) com>
   * `ApiResponse` is open-sourced library licensed under the Apache 2.0 license

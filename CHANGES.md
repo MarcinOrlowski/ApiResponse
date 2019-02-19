@@ -1,9 +1,15 @@
 ApiResponse
 ===========
 
+v2.0.0 (2019.02.18)
+-------------------
+- Switched to use Jetpack (androidx.*)
+- Corrected `getLocale()` annotation
+
+
 v1.3.0 (2018.05.30)
 -------------------
-- Updated depenencies
+- Updated dependencies
 - Added Android-State bundler
 - IcePick's bundler class renamed to "ApiResponseBundler"
 
