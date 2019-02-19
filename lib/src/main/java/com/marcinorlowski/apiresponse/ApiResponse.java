@@ -176,7 +176,7 @@ final public class ApiResponse implements Parcelable {
 
 	// -----------------------------------------------------------------------------------------
 
-	@NonNul
+	@NonNull
 	protected JSONObject responseJsonObject = new JSONObject();
 
 	// -----------------------------------------------------------------------------------------
