@@ -51,5 +51,5 @@ Contributing
 License
 =======
   
-  * Written and copyrighted &copy;2013-2018 by Marcin Orlowski <mail (#) marcinorlowski (.) com>
+  * Written and copyrighted &copy;2013-2019 by Marcin Orlowski <mail (#) marcinorlowski (.) com>
   * `ApiResponse` is open-sourced library licensed under the Apache 2.0 license
