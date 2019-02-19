@@ -1,6 +1,10 @@
 ApiResponse
 ===========
 
+v2.0.1 (2019.02.18)
+-------------------
+- Fixed typo in annotation name
+
 v2.0.0 (2019.02.18)
 -------------------
 - Switched to use Jetpack (androidx.*)
